@@ -21,6 +21,21 @@ This repository contains the initial stage of a student project to build a clone
 | 10. Console 1.0 | [console.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/console.py) [/models/engine/file_storage.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/engine/file_storage.py) | Update the console and file storage system to work dynamically with all  classes update file storage |
 <br>
 <br>
+# Learning Objectives
+At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
+
+## General
+* What is Unit testing and how to implement it in a large project
+* What is *args and how to use it
+* What is **kwargs and how to use it
+* How to handle named arguments in a function
+* How to create a MySQL database
+* How to create a MySQL user and grant it privileges
+* What ORM means
+* How to map a Python Class to a MySQL table
+* How to handle 2 different storage engines with the same codebase
+* How to use environment variables
+
 <center> <h2>General Use</h2> </center>
 
 1. First clone this repository.
