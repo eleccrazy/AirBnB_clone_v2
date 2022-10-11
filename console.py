@@ -13,12 +13,6 @@ from models.review import Review
 from json import loads
 
 
-def helper(obj, **kwargs):
-    if (kwargs):
-        for key in kwargs:
-            obj.__dict__[key] = kwargs[key]
-
-
 class HBNBCommand(cmd.Cmd):
     """ Contains the functionality for the HBNB console"""
 
@@ -122,25 +116,36 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, args):
         """ Create an object of any class"""
-        argList = args.split(" ", 1)
-        if not argList[0]:
+        try:
+            if not args:
+                raise SyntaxError()
+
+            my_list = args.split(" ")
+
+            param_list = {}
+            for i in range(1, len(my_list)):
+                key, value = tuple(my_list[i].split("="))
+                if value[0] == '"':
+                    value = value.strip('"').replace("_", " ")
+                else:
+                    try:
+                        value = eval(value)
+                    except (SyntaxError, NameError):
+                        continue
+                param_list[key] = value
+
+            if param_list == {}:
+                new_instance = eval(my_list[0])()
+            else:
+                new_instance = eval(my_list[0])(**param_list)
+
+            print(new_instance.id)
+            new_instance.save()
+
+        except SyntaxError:
             print("** class name missing **")
-            return
-        elif argList[0] not in HBNBCommand.classes:
+        except NameError:
             print("** class doesn't exist **")
-            return
-        new_instance = HBNBCommand.classes[argList[0]]()
-        if len(argList) > 1:
-            paramList = argList[1].split(" ")
-            param_dict = {}
-            for i in range(len(paramList)):
-                key, v = tuple(paramList[i].split("="))
-                value = v.strip("\"").replace("_", " ")
-                param_dict[key] = value
-            helper(new_instance, **param_dict)
-        storage.save()
-        print(new_instance.id)
-        storage.save()
 
     def help_create(self):
         """ Help information for the create method """
@@ -222,11 +227,11 @@ class HBNBCommand(cmd.Cmd):
             if args not in HBNBCommand.classes:
                 print("** class doesn't exist **")
                 return
-            for k, v in storage._FileStorage__objects.items():
+            for k, v in storage.all().items():
                 if k.split('.')[0] == args:
                     print_list.append(str(v))
         else:
-            for k, v in storage._FileStorage__objects.items():
+            for k, v in storage.all().items():
                 print_list.append(str(v))
 
         print(print_list)
