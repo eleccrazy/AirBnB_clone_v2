@@ -98,7 +98,7 @@ class HBNBCommand(cmd.Cmd):
         exit()
 
     def help_quit(self):
-        """ Prints the help documentation for quit  """
+        """ Prints the help documentation for quit cmd  """
         print("Exits the program with formatting\n")
 
     def do_EOF(self, arg):
@@ -253,7 +253,7 @@ class HBNBCommand(cmd.Cmd):
         print(count)
 
     def help_count(self):
-        """ """
+        """Help Information for Usage count """
         print("Usage: count <class_name>")
 
     def do_update(self, args):
