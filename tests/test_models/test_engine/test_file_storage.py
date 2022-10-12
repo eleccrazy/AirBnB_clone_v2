@@ -1,21 +1,11 @@
 #!/usr/bin/python3
-""" file storage test module """
-
+""" Module for testing file storage"""
 import unittest
-import pep8
-import json
-import os
 from models.base_model import BaseModel
-from models.user import User
-from models.state import State
-from models.city import City
-from models.amenity import Amenity
-from models.place import Place
-from models.review import Review
 from models import storage
+import os
 
 
-@unittest.skipIf(os.getenv("HBNB_TYPE_STORAGE") == "db", "Using DB")
 class test_fileStorage(unittest.TestCase):
     """ Class to test the file storage method """
 
@@ -31,14 +21,8 @@ class test_fileStorage(unittest.TestCase):
         """ Remove storage file at end of tests """
         try:
             os.remove('file.json')
-        except Exception:
+        except:
             pass
-
-    def test_pep8_FileStorage(self):
-        """to test for pep8 """
-        style = pep8.StyleGuide(quiet=True)
-        p = style.check_files(['models/engine/file_storage.py'])
-        self.assertEqual(p.total_errors, 0, "fix pep8")
 
     def test_obj_list_empty(self):
         """ __objects is initially empty """
