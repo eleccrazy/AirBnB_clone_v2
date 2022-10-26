@@ -11,9 +11,8 @@ def do_pack():
     appended_name = now.strftime("%Y%m%d%H%M%S")
     archive_name = "versions/web_static_" + appended_name + ".tgz"
 
-    if not isdir("versions"):
-        if local("mkdir -p versions").succeeded is False:
-            return None
+    if local("mkdir -p versions").succeeded is False:
+        return None
     if local("tar -cvzf {} web_static".format(archive_name)).failed is True:
         return None
 
