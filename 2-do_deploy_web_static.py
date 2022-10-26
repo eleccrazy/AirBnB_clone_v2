@@ -2,9 +2,7 @@
 """This python script distributes an archive to web servers,
 using the function do_deploy"""
 from os.path import exists
-from fabric.api import run
-from fabric.api import put
-from fabric.api import env
+from fabric.api import run, put, env
 
 env.hosts = ["44.192.38.74", "35.174.176.158"]
 
