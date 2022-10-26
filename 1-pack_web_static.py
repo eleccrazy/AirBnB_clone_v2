@@ -9,7 +9,7 @@ def do_pack():
     """A method that acomplishes the above objective"""
     now = datetime.now()
     appended_name = now.strftime("%Y%m%d%H%M%S")
-    archive_name = "web_static_" + appended_name + ".tgz"
+    archive_name = "versions/web_static_" + appended_name + ".tgz"
 
     if not isdir("versions"):
         if local("mkdir -p versions").succeeded is False:
