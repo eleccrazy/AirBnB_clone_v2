@@ -15,7 +15,7 @@ echo -e "<html>
   </body>
 </html>" > /data/web_static/releases/test/index.html
 
-ln -s -f /data/web_static/releases/test/ /data/web_static/current
+ln -sf /data/web_static/releases/test/ /data/web_static/current
 
 chown -R ubuntu /data/
 chgrp -R ubuntu /data/
