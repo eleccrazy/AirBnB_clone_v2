@@ -2,9 +2,9 @@
 """This python script distributes an archive to web servers,
 using the function do_deploy"""
 from os.path import exists
-from fabric import run
-from fabric import put
-from fabric import env
+from fabric.api import run
+from fabric.api import put
+from fabric.api import env
 
 env.hosts = ["44.192.38.74", "35.174.176.158"]
 
@@ -14,8 +14,8 @@ def do_deploy(archive_path):
     if not exists(archive_path):
         return False
 
-    full_name = archive.split("/")[1]
-    file_name = archive.split("/")[1].split(".")[0]
+    full_name = archive_path.split("/")[1]
+    file_name = archive_path.split("/")[1].split(".")[0]
 
     if put(archive_path, "/tmp/{}".format(
            full_name)).failed is True:
