@@ -10,7 +10,7 @@ def do_pack():
     appended_name = now.strftime("%Y%m%d%H%M%S")
     archive_name = "versions/web_static_" + appended_name + ".tgz"
 
-    local("mkdir versions")
+    local("mkdir -p versions")
 
     if local("tar -cvzf {} web_static".format(archive_name)).failed is True:
         return None
