@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This python script uses flask and geneates a .tgz file file."""
+"""This pyhton script compresses the contents of webstatic to .tzg file"""
 from datetime import datetime
 from os.path import isdir
 from fabric.api import local
