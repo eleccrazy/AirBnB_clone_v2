@@ -3,6 +3,8 @@
 from os import listdir
 from fabric.api import *
 
+env.hosts = ["44.192.38.74", "35.174.176.158"]
+
 
 def do_clean(number=0):
     """Cleans outdated versions of airbnb site"""
