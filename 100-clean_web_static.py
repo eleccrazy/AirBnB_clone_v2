@@ -8,7 +8,7 @@ def do_clean(number=0):
     """Cleans outdated versions of airbnb site"""
     number = 1 if int(number) == 0 else int(number)
 
-    archives = sorted(os.listdir("versions"))
+    archives = sorted(listdir("versions"))
     [archives.pop() for i in range(number)]
     with lcd("versions"):
         [local("rm ./{}".format(a)) for a in archives]
