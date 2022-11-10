@@ -1,0 +1,27 @@
+#!/usr/bin/python3
+"""
+file: 1-hbnb_route.py
+desc: This module runs a simple flask app.
+Author: Gizachew Bayness (Elec Crazy)
+Date Created: Nov 10, 2022
+"""
+from flask import Flask
+
+app = Flask("__name__")
+app.url_map.strict_slashes = False
+
+
+@app.route("/")
+def hello_hbnb():
+    """Displays 'Hello HBNB! from the root path"""
+    return "Hello HBNB!"
+
+
+@app.route("/hbnb")
+def hbnb():
+    """Displays 'HBNB' from the /hbnb path"""
+    return "HBNB"
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0")
