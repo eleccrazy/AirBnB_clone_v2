@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 """
-file: 4-number_route.py
+file: 5-number_template.py
 desc: This module runs a simple flask app.
 Author: Gizachew Bayness (Elec Crazy)
-Date Created: Nov 10, 2022
+Date Created: Nov 11, 2022
 """
 from flask import Flask, render_template
 
-app = Flask("__name__")
+app = Flask(__name__)
 
 
 @app.route("/", strict_slashes=False)
@@ -42,10 +42,9 @@ def number_n(n):
 
 
 @app.route("/number_template/<int:n>", strict_slashes=False)
-def number_template(n):
-    """Renders an html page if n is a number"""
+def template_for_n(n):
+    """Renders an html page if n is number"""
     return render_template("5-number.html", n=n)
-
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
