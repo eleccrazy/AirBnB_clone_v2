@@ -14,7 +14,8 @@ class FileStorage:
         if cls is not None:
             cls_dict = {}
             for key, obj in obj_dict.items():
-                if type(cls) == str: cls = eval(cls)
+                if type(cls) == str:
+                    cls = eval(cls)
                 if (type(obj) == cls):
                     cls_dict[key] = obj
             return cls_dict
@@ -53,7 +54,7 @@ class FileStorage:
             with open(FileStorage.__file_path, 'r') as f:
                 temp = json.load(f)
                 for key, val in temp.items():
-                        self.all()[key] = classes[val['__class__']](**val)
+                    self.all()[key] = classes[val['__class__']](**val)
         except FileNotFoundError:
             pass
 
